@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string InvertirTexto(string s);
+
+int main() {
+    string frase;
+    cout << "Ingrese una frase al reves entre parentesis: " << endl;
+    getline(cin, frase);
+
+    string textoInvertido = InvertirTexto(frase);
+    cout << "Texto invertido entre parentesis: " << textoInvertido << endl;
+
+    return 0;
+}
+
+string InvertirTexto(string s) {
+    string fraseInvertida;
+    bool dentroParentesis = false;
+    string textoTemporal;
+
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == '(') {
+            dentroParentesis = true;
+            textoTemporal = "";  
+        } else if (s[i] == ')') {
+            dentroParentesis = false;
+            for (int j = textoTemporal.size() - 1; j >= 0; j--) {
+                fraseInvertida += textoTemporal[j];
+            }
+        } else {
+            if (dentroParentesis) {
+                textoTemporal += s[i];
+            } else {
+                fraseInvertida += s[i];
+            }
+        }
+    }
+
+    return fraseInvertida;
+}
