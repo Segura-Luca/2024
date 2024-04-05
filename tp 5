@@ -1,0 +1,30 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+string ConvertirElNombre(string frase);
+
+int main() {
+    string NuevaFrase;
+    string frase;
+    cout << "Ingrese un nombre: " << endl;
+    cin >> frase;
+
+    NuevaFrase = ConvertirElNombre(frase);
+
+    cout << "Konichiwa " << NuevaFrase << "san-" << endl;
+}
+
+string ConvertirElNombre(string frase) {
+    for (int i = 0; i < frase.size(); i++) {
+        if (frase[i] != 'a' && frase[i] != 'e' && frase[i] != 'i' && frase[i] != 'o' && frase[i] != 'n') {
+            if ((i + 1 >= frase.size() || (frase[i + 1] != 'a' && frase[i + 1] != 'e' && frase[i + 1] != 'i' && frase[i + 1] != 'o' && frase[i + 1] != 'n')) &&
+                (i - 1 < 0 || (frase[i - 1] != 'a' && frase[i - 1] != 'e' && frase[i - 1] != 'i' && frase[i - 1] != 'o' && frase[i - 1] != 'n'))) {
+                frase.insert(i + 1, "u");
+            }
+        } else {
+            
+        }
+    }
+    return frase;
+}
