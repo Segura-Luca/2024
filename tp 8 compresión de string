@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string corchetes(string frase);
+
+int main()
+{
+    string frase;
+    cout << "Ingrese una frase: " << endl;
+    getline(cin, frase);
+
+    cout << corchetes(frase) << endl;
+
+    return 0;
+}
+
+string corchetes(string frase)
+{
+    string resultado;
+    int contador = 1;
+for (int i = 0; i < frase.size(); i++)
+    {
+        if (frase[i] == frase[i + 1])
+        {
+            contador++;
+        }
+        else
+        { resultado += frase[i];
+            if (contador > 1)
+            {
+                resultado += "{" + to_string(contador) + "}";
+  contador = 1;
+  }
+ }
+  }
+
+    return resultado;
+}
