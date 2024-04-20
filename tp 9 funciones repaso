@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+string InvertirFrase(string frase,int I,int F);
+
+int main() {
+    string frase;
+    int I, F;
+    
+    cout << "Ingresa una frase: ";
+    getline(cin, frase);
+    
+    cout << "Ingresa el inicio y final: ";
+    cin >> I >> F;
+    
+    cout << InvertirFrase( frase, I, F)<<endl;
+    
+    return 0;
+}
+
+string InvertirFrase(string frase, int I, int F) {
+    reverse(frase.begin() + I, frase.begin() + F + 1);
+    return frase;
+}
+
+
