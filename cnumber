@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+class Cnumber {
+  private:
+    int n1;
+    int n2;
+    int n3;
+
+  public:
+    Cnumber(int a, int b, int c);
+
+    float promedio();
+    int nMax();
+    int nMin();
+    int impar();
+    int par();
+};
+
+Cnumber::Cnumber(int a, int b, int c) {
+    n1 = a;
+    n2 = b;
+    n3 = c;
+}
+
+float Cnumber::promedio() {
+    return (n1 + n2 + n3) / 3.0;
+}
+
+int Cnumber::nMax() {
+    return max(n1, max(n2, n3));
+}
+
+int Cnumber::nMin() {
+    return min(n1, min(n2, n3));
+}
+
+int Cnumber::impar() {
+    int count = 0;
+    if (n1 % 2 != 0) count++;
+    if (n2 % 2 != 0) count++;
+    if (n3 % 2 != 0) count++;
+    return count;
+}
+
+int Cnumber::par() {
+    int count = 0;
+    if (n1 % 2 == 0) count++;
+    if (n2 % 2 == 0) count++;
+    if (n3 % 2 == 0) count++;
+    return count;
+}
+
+int main() {
+    int a = 7;
+    int b = 10;
+    int c = 2;
+
+    Cnumber numbers(a, b, c);
+
+    cout << "Promedio: " << numbers.promedio() << endl;
+    cout << "Maximo: " << numbers.nMax() << endl;
+    cout << "Minimo: " << numbers.nMin() << endl;
+    cout << "Cantidad de numeros impares: " << numbers.impar() << endl;
+    cout << "Cantidad de numeros pares: " << numbers.par() << endl;
+
+    return 0;
+}
