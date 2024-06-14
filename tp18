@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Empleado {
+private:
+    string nombre;
+    string apellido;
+    string domicilio;
+    int cantidad_hijos;
+    double sueldo_basico;
+    int antiguedad;
+
+    double calcularJubilacion() const {
+        return sueldo_basico * 0.11;
+    }
+
+    double calcularObraSocial() const {
+        return sueldo_basico * 0.03;
+    }
+
+    double calcularINSSJP() const {
+        return sueldo_basico * 0.03;
+    }
+
+    double calcularDeducciones() const {
+        return calcularJubilacion() + calcularObraSocial() + calcularINSSJP();
+    }
+
+public:
+    Empleado(string nom, string ape, string dom, int hijos, double sueldo, int antig)
+        : nombre(nom), apellido(ape), domicilio(dom), cantidad_hijos(hijos), sueldo_basico(sueldo), antiguedad(antig) {}
+
+    void mostrarInformacion() const {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Apellido: " << apellido << endl;
+        cout << "Domicilio: " << domicilio << endl;
+        cout << "Cantidad de hijos: " << cantidad_hijos << endl;
+        cout << "Sueldo básico: " << sueldo_basico << endl;
+        cout << "Antigüedad: " << antiguedad << " años" << endl;
+        cout << "Deducciones: " << calcularDeducciones() << endl;
+    }
+};
+
+int main() {
+    Empleado emp("Juan", "Rodriguez", "Calle Falsa 123", 3, 900000, 12);
+    emp.mostrarInformacion();
+    return 0;
+}
