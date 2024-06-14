@@ -1,0 +1,78 @@
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class CCuenta
+{
+private:
+  string titular;
+  double cantidad;
+
+public:
+  CCuenta (string t, double c = 0.0):titular (t), cantidad (c)
+  {
+  }
+
+  void ingresar (double c)
+  {
+	if (c > 0)
+	  {
+		cantidad += c;
+	  }
+  }
+
+  void retirar (double c)
+  {
+	if (c > 0)
+	  {
+		if (cantidad - c < 0)
+		  {
+			cantidad = 0;
+		  }
+		else
+		  {
+			cantidad -= c;
+		  }
+	  }
+  }
+
+  void mostrar () const
+  {
+	cout << "nombre: " << titular << ",dinero: " << cantidad << endl;
+  }
+};
+
+int
+main ()
+{
+  string titular;
+  double cantidad_inicial;
+  cout << "Ingrese el nombre: ";
+  getline (cin, titular);
+
+  cout << "Ingrese cantidad de dinero ";
+  cin >> cantidad_inicial;
+  cin.ignore ();
+
+  CCuenta cuenta (titular, cantidad_inicial);
+
+  cuenta.mostrar ();
+
+  double cantidad_ingresar;
+  cout << "Ingrese la cantidad que desea ingresar: ";
+  cin >> cantidad_ingresar;
+  cuenta.ingresar (cantidad_ingresar);
+
+  cuenta.mostrar ();
+
+  double cantidad_retirar;
+  cout << "Ingrese la cantidad que  va a retirar: ";
+  cin >> cantidad_retirar;
+  cuenta.retirar (cantidad_retirar);
+
+  cuenta.mostrar ();
+
+  return 0;
+}
