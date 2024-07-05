@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Cliente {
+private:
+    string nombre;
+    string numeroTarjetaCredito;
+    string dni;
+
+public:
+    Cliente(string nombre, string numeroTarjetaCredito, string dni) 
+        : nombre(nombre), numeroTarjetaCredito(numeroTarjetaCredito), dni(dni) {}
+
+    string getNombre() {
+        return nombre;
+    }
+
+    string getNumeroTarjetaCredito() {
+        return numeroTarjetaCredito;
+    }
+
+    string getDNI() {
+        return dni;
+    }
+};
+
+int main() {
+    
+    Cliente cliente1("Juan Pérez", "1234-5678-9101-1121", "12345678A");
+    Cliente cliente2("María Gómez", "2345-6789-1011-2232", "23456789B");
+    Cliente cliente3("Carlos Rodríguez", "3456-7890-1122-3343", "34567890C");
+
+    
+    vector<Cliente> clientes = {cliente1, cliente2, cliente3};
+
+    
+    for (Cliente& cliente : clientes) {
+        cout << "Nombre: " << cliente.getNombre() << endl;
+        cout << "Número de Tarjeta de Crédito: " << cliente.getNumeroTarjetaCredito() << endl;
+        cout << "DNI: " << cliente.getDNI() << endl;
+        cout << "------------------------" << endl;
+    }
+
+    return 0;
+}
